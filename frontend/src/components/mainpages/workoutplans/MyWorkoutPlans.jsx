@@ -90,50 +90,54 @@ function MyWorkoutPlans() {
   };
 
   return (
-    <Box sx={{ backgroundColor: Colors.primary }}>
+    <Box>
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          width: "100%",
-          mt: "10px",
-          margin: "-8px",
-          backgroundColor: Colors.primary,
-        }}
-      >
-        <Typography
-          variant="h2"
-          component="h2"
-          fontWeight="bold"
-          fontFamily="Montserrat"
-          color="white"
-        >
-          Personal Fitness
-        </Typography>
-        <Typography
-          variant="h2"
-          component="h2"
-          fontFamily="Montserrat"
-          color="black"
-          fontWeight="bold"
-        >
-          Routines and Exercises
-        </Typography>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          backgroundImage: `url(/src/assets/e.png)`,
+          backgroundImage: `url(/src/assets/myWorkoutPlan1.jpg)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           margin: "-8px",
-          mt: "5px",
-          height: "2500px",
+          height: "85vh",
         }}
       >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            width: "100%",
+            backgroundColor: "rgba(5, 4, 18, 0.5)",
+            height: "100px",
+            mt: "1000px",
+            margin: "-8px",
+            mb: "250px",
+          }}
+        >
+          <Typography
+            variant="h2"
+            component="h2"
+            fontWeight="bold"
+            fontFamily="Montserrat"
+            color="white"
+            mr="20px"
+            ml="20px"
+          >
+            Personal
+          </Typography>
+          <Typography
+            variant="h2"
+            component="h2"
+            fontFamily="Montserrat"
+            color={Colors.primary}
+            fontWeight="bold"
+          >
+            Fitness Plans
+          </Typography>
+        </Box>
         <Box
           sx={{
             display: "flex",
@@ -157,11 +161,9 @@ function MyWorkoutPlans() {
                 flexDirection: "column",
                 width: "29%",
                 border: "2px solid white",
-                minHeight: "650px",
+                minHeight: "100%",
                 backgroundColor:
-                  hoveredCard === index
-                    ? "rgba(252, 251, 255, 0.8)"
-                    : "rgba(252, 251, 255, 0.5)",
+                  hoveredCard === index ? Colors.darkBlue : Colors.darkBlue,
                 transition: "background-color 0.3s ease",
                 transform: hoveredCard === index ? "scale(1.05)" : "scale(1)",
                 boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.7)",
@@ -183,9 +185,9 @@ function MyWorkoutPlans() {
                 }}
               >
                 <Typography
-                  variant="h4"
-                  component="h4"
-                  color="black"
+                  variant="h3"
+                  component="h3"
+                  color="white"
                   mb="10px"
                   maxWidth="100%"
                   whiteSpace="normal"
@@ -208,7 +210,6 @@ function MyWorkoutPlans() {
                       mb: "10px",
                       width: "95%",
                       ml: "40px",
-                      backgroundColor: "rgba(5, 4, 18, 0.6)",
                     }}
                   >
                     <TodayIcon sx={{ color: "white", mr: "15px" }} />
@@ -233,7 +234,6 @@ function MyWorkoutPlans() {
                           mb: "10px",
                           ml: "40px",
                           width: "80%",
-                          backgroundColor: "rgba(5, 4, 18, 0.4)",
                         }}
                       >
                         <DirectionsRunIcon
@@ -268,12 +268,12 @@ function MyWorkoutPlans() {
                             width: "30%",
                           }}
                         >
-                          <LayersIcon sx={{ color: "black", mr: "15px" }} />
+                          <LayersIcon sx={{ color: "white", mr: "15px" }} />
                           <Typography
                             variant="body2"
                             component="p"
                             mr="20px"
-                            color="black"
+                            color="white"
                           >
                             {exercise.sets} sets
                           </Typography>
@@ -288,12 +288,12 @@ function MyWorkoutPlans() {
                             width: "40%",
                           }}
                         >
-                          <ReplayIcon sx={{ color: "black", mr: "15px" }} />
+                          <ReplayIcon sx={{ color: "white", mr: "15px" }} />
                           <Typography
                             variant="body2"
                             component="p"
                             mr="20px"
-                            color="black"
+                            color="white"
                           >
                             {exercise.repetitions} repetitions
                           </Typography>
@@ -309,13 +309,13 @@ function MyWorkoutPlans() {
                           }}
                         >
                           <FitnessCenterIcon
-                            sx={{ color: "black", mr: "15px" }}
+                            sx={{ color: "white", mr: "15px" }}
                           />
                           <Typography
                             variant="body2"
                             component="p"
                             mr="20px"
-                            color="black"
+                            color="white"
                           >
                             {exercise.weight} weight
                           </Typography>
@@ -332,11 +332,11 @@ function MyWorkoutPlans() {
                           ml: "40px",
                         }}
                       >
-                        <DescriptionIcon sx={{ color: "black", mr: "15px" }} />
+                        <DescriptionIcon sx={{ color: "white", mr: "15px" }} />
                         <Typography
                           variant="body2"
                           component="p"
-                          color="black"
+                          color="white"
                           fontSize="12px"
                         >
                           {exercise.note}
