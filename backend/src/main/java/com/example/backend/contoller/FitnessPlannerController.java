@@ -3,6 +3,8 @@ package com.example.backend.contoller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.backend.model.FitnessPlan;
 import com.example.backend.repository.FitnessPlanRepo;
 
-import jakarta.servlet.http.HttpServletResponse;
 import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
