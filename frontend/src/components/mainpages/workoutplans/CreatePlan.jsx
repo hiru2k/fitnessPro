@@ -33,8 +33,7 @@ const Item = ({ id, text, index, moveItem, type, menu }) => {
         padding: "8px",
         marginBottom: "4px",
         borderRadius: "5px",
-        backgroundColor:
-          menu === "menu1" ? "rgba(5, 4, 18, 0.7)" : "rgba(252, 251, 255, 0.7)",
+        backgroundColor: menu === "menu1" ? Colors.darkBlue : Colors.gray,
       }}
     >
       {text}
@@ -151,7 +150,7 @@ const DropArea = ({
   return (
     <div
       style={{
-        minHeight: "550px",
+        minHeight: "300px",
         width: "500px",
         alignItems: "center",
         padding: "8px",
@@ -167,7 +166,7 @@ const DropArea = ({
           })[1]
         }
         style={{
-          minHeight: "550px",
+          minHeight: "300px",
           width: "500px",
           alignItems: "center",
           padding: "8px",
@@ -175,10 +174,10 @@ const DropArea = ({
           flexDirection: "column",
         }}
       >
-        <h3>Workout Plan</h3>
+        <h3 style={{ color: "black" }}>Fitness Plan Template</h3>
         <TextField
           id="outlined-basic"
-          label="Plan Title"
+          placeholder="Plan Title"
           variant="outlined"
           value={planTitle}
           onChange={(e) => {
@@ -192,7 +191,7 @@ const DropArea = ({
               color: Colors.white, // Set text color to black
             },
             "& .MuiOutlinedInput-root": {
-              backgroundColor: "rgba(5, 4, 18, 0.7)",
+              backgroundColor: "black",
               borderColor: "green", // Set default border color to orange
             },
             "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
@@ -278,7 +277,7 @@ const DropItem = ({
         width: "700px",
         flexDirection: "column",
         borderRadius: "5px",
-        backgroundColor: "#050412",
+        backgroundColor: Colors.darkBlue,
       }}
     >
       <div
@@ -296,7 +295,7 @@ const DropItem = ({
           style={{
             marginLeft: "auto",
             cursor: "pointer",
-            color: "#FB5B21",
+            color: "white",
           }}
         />
       </div>
@@ -310,7 +309,7 @@ const DropItem = ({
             alignItems: "flex-center",
             flexDirection: "column",
             borderRadius: "5px",
-            backgroundColor: "rgba(252, 251, 255, 0.7)",
+            backgroundColor: Colors.gray,
             color: "black",
             width: "650px",
           }}
@@ -342,8 +341,7 @@ const DropItem = ({
             >
               <TextField
                 id={`${item.id}-sets`}
-                label="Sets"
-                type="number"
+                placeholder="Sets"
                 value={exerciseValues[item.id]?.sets || ""}
                 onChange={(e) => handleChange(item.id, "sets", e.target.value)}
                 variant="outlined"
@@ -379,8 +377,7 @@ const DropItem = ({
             <div style={{ flex: 1, padding: "5px" }}>
               <TextField
                 id={`${item.id}-repetitions`}
-                label="Repetitions"
-                type="number"
+                placeholder="Repetitions"
                 value={exerciseValues[item.id]?.repetitions || ""}
                 onChange={(e) =>
                   handleChange(item.id, "repetitions", e.target.value)
@@ -418,8 +415,7 @@ const DropItem = ({
             <div style={{ flex: 1, padding: "5px" }}>
               <TextField
                 id={`${item.id}-weight`}
-                label="Weight"
-                type="number"
+                placeholder="Weight(kg)"
                 value={exerciseValues[item.id]?.weight || ""}
                 onChange={(e) =>
                   handleChange(item.id, "weight", e.target.value)
@@ -456,7 +452,6 @@ const DropItem = ({
             <div style={{ flex: 2, padding: "5px" }}>
               <TextField
                 id={`${item.id}-note`}
-                label="Note"
                 multiline
                 placeholder="Type something…"
                 value={exerciseValues[item.id]?.note || ""}
@@ -539,15 +534,24 @@ function CreatePlan() {
   };
 
   const [menu1Items, setMenu1Items] = useState([
-    { id: 1, text: "Upper Body" },
-    { id: 2, text: "Lower Body" },
-    { id: 3, text: "Core" },
+    { id: 1, text: "Full Body Workout" },
+    { id: 2, text: "Push Workout" },
+    { id: 3, text: "Pull Workout" },
+    { id: 4, text: "Leg Day" },
+    { id: 5, text: "Core and Abs" },
+    { id: 6, text: "Core and Abs" },
   ]);
 
   const [menu2Items, setMenu2Items] = useState([
-    { id: 4, text: "Bench Press" },
-    { id: 5, text: "Bent-Over Rows" },
-    { id: 6, text: "Shoulder Press" },
+    { id: 7, text: "Squats" },
+    { id: 8, text: "Deadlifts" },
+    { id: 9, text: "Pull-Ups" },
+    { id: 10, text: "Dumbbell Chest Press" },
+    { id: 11, text: "Overhead Press" },
+    { id: 12, text: "Barbell Rows" },
+    { id: 13, text: "Calf Raises" },
+    { id: 14, text: "Russian Twists" },
+    { id: 15, text: "Bicycle Crunches" },
   ]);
 
   const [droppedItems, setDroppedItems] = useState([]);
@@ -583,13 +587,13 @@ function CreatePlan() {
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",
-        backgroundImage: `url(/src/assets/a.jpg)`,
+
         backgroundSize: "cover",
         backgroundBlendMode: "overlay",
         backgroundPosition: "center",
         margin: "-8px",
         position: "relative",
-        minHeight: "120vh",
+        minHeight: "100vh",
         height: backgroundHeight,
       }}
     >
@@ -597,13 +601,13 @@ function CreatePlan() {
         sx={{
           display: "flex",
           alignItems: "flex-start",
-          justifyContent: "space-between",
+          justifyContent: "flex-start",
           flexDirection: "row",
           mt: "20px",
+          padding: "100px",
+          width: "10030px",
 
-          width: "130px",
           height: "100%",
-          padding: "80px",
         }}
       >
         {" "}
@@ -613,10 +617,11 @@ function CreatePlan() {
               display: "flex",
               backgroundColor: Colors.secondary,
               padding: "12px",
-              borderRadius: "360px",
+              borderRadius: "5px",
               alignItems: "center",
               justifyContent: "center",
               width: "30px",
+              marginRight: "10px",
               height: "30px",
               cursor: "pointer",
             }}
@@ -631,7 +636,7 @@ function CreatePlan() {
               display: "flex",
               backgroundColor: Colors.secondary,
               padding: "12px",
-              borderRadius: "360px",
+              borderRadius: "5px",
               alignItems: "center",
               justifyContent: "center",
               width: "30px",
@@ -653,6 +658,7 @@ function CreatePlan() {
           position: "absolute",
           width: "100%",
           height: "80%",
+
           padding: "20px",
         }}
       >
@@ -661,17 +667,19 @@ function CreatePlan() {
           sx={{
             display: "flex",
             width: "20%",
-            minHeight: "90%",
+            minHeight: "70%",
             marginRight: "20px",
-            backgroundColor: "rgba(5, 4, 18, 0.5)",
+
             justifyContent: "flex-start",
             alignItems: "center",
             color: "white",
+
             flexDirection: "column",
           }}
         >
           <DndProvider backend={HTML5Backend}>
-            <h3>Routines</h3>
+            <h3 style={{ color: "black" }}>Routines</h3>
+
             <Menu
               moveItem={(dragIndex, hoverIndex) =>
                 moveItem(dragIndex, hoverIndex, "menu1")
@@ -683,19 +691,42 @@ function CreatePlan() {
           </DndProvider>
         </Card>
         <Card
+          id="menu-2"
+          sx={{
+            display: "flex",
+            justifyContent: "flex-start",
+            alignItems: "center",
+            flexDirection: "column",
+            width: "20%",
+            minHeight: "70%",
+          }}
+        >
+          <DndProvider backend={HTML5Backend}>
+            <h3>Exercises</h3>
+            <Menu
+              moveItem={(dragIndex, hoverIndex) =>
+                moveItem(dragIndex, hoverIndex, "menu2")
+              }
+              items={menu2Items}
+              type="MENU2_ITEM"
+              menu="menu2"
+            />
+          </DndProvider>
+        </Card>
+        <Card
           id="drop-area"
           sx={{
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
             flexDirection: "column",
-            width: "45%",
-            minHeight: "90%",
-            marginRight: "20px",
+            width: "60%",
+            minHeight: "50%",
+            marginLeft: "20px",
             color: "white",
             fontSize: "medium",
-            backgroundColor: "rgba(5, 4, 18, 0.5)",
-            border: "2px solid white",
+
+            border: "2px dotted black",
             borderRadius: "10px",
             padding: "20px",
             boxSizing: "border-box",
@@ -710,31 +741,6 @@ function CreatePlan() {
               menu2Items={menu2Items}
               planTitle={planTitle}
               setPlanTitle={setPlanTitle}
-            />
-          </DndProvider>
-        </Card>
-
-        <Card
-          id="menu-2"
-          sx={{
-            display: "flex",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            flexDirection: "column",
-            width: "20%",
-            minHeight: "90%",
-            backgroundColor: "rgba(252, 251, 255, 0.5)",
-          }}
-        >
-          <DndProvider backend={HTML5Backend}>
-            <h3>Exercises</h3>
-            <Menu
-              moveItem={(dragIndex, hoverIndex) =>
-                moveItem(dragIndex, hoverIndex, "menu2")
-              }
-              items={menu2Items}
-              type="MENU2_ITEM"
-              menu="menu2"
             />
           </DndProvider>
         </Card>
