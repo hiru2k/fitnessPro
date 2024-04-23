@@ -6,8 +6,14 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,4 +42,36 @@ public class FitnessPlannerController {
         return repo.findAll();
     }
 
+    @PostMapping("/wplan")
+    @CrossOrigin
+    public FitnessPlan addWorkoutPlan(@RequestBody FitnessPlan fitnessPlan) {
+        return repo.save(fitnessPlan);
+    }
+
+    @DeleteMapping("/wplan/{id}")
+    @CrossOrigin
+    public void deleteWorkoutPlan(@PathVariable String id) {
+        repo.deleteById(id);
+    }
+
+    @GetMapping("/wplan/{id}")
+    @CrossOrigin
+    public ResponseEntity<FitnessPlan> getWorkoutPlanById(@PathVariable String id) {
+        FitnessPlan fitnessPlan = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Workout Plan not found with id: " + id));
+        return ResponseEntity.ok(fitnessPlan);
+    }
+
+    @PutMapping("/wplan/{id}")
+    @CrossOrigin
+    public ResponseEntity<FitnessPlan> editWorkoutPlan(@PathVariable String id, @RequestBody FitnessPlan updatedPlan) {
+        FitnessPlan existingPlan = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Workout Plan not found with id: " + id));
+
+        existingPlan.setPlanName(updatedPlan.getPlanName());
+        existingPlan.setRoutines(updatedPlan.getRoutines());
+
+        FitnessPlan savedPlan = repo.save(existingPlan);
+        return ResponseEntity.ok(savedPlan);
+    }
 }
