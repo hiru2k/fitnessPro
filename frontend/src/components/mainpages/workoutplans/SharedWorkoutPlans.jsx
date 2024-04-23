@@ -13,6 +13,7 @@ import LayersIcon from "@mui/icons-material/Layers";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import ReplayIcon from "@mui/icons-material/Replay";
 import DescriptionIcon from "@mui/icons-material/Description";
+import { colors } from "@mui/material";
 
 function SharedWorkoutPlans() {
   const [workoutPlans, setWorkoutPlans] = useState([]);
@@ -49,7 +50,7 @@ function SharedWorkoutPlans() {
         height: "70%",
 
         gap: "20px",
-        backgroundColor: "#f0f2f5",
+        backgroundColor: Colors.white,
         margin: "-8px",
       }}
     >
@@ -58,19 +59,23 @@ function SharedWorkoutPlans() {
           key={index}
           sx={{
             display: "flex",
+            flexDirection: "column",
             justifyContent: "flex-start",
             alignItems: "flex-start",
-            flexDirection: "column",
             marginTop: "10px",
             width: "900px",
+            backgroundColor: Colors.gray,
             border: "2px solid #F5F5F5",
-            minHeight: "500px",
-            transition: "background-image 0.3s ease",
-            transform: hoveredCard === index ? "scale(1.01)" : "scale(1)",
+            boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
             borderRadius: "6px",
             padding: "20px",
             color: Colors.white,
             position: "relative",
+            transition: "transform 0.3s ease, box-shadow 0.3s ease",
+            "&:hover": {
+              transform: "scale(1.02)",
+              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+            },
           }}
           onMouseEnter={() => handleMouseEnter(index)}
           onMouseLeave={handleMouseLeave}
@@ -104,7 +109,7 @@ function SharedWorkoutPlans() {
               fontSize="13px"
               fontWeight="bold"
             >
-              Amal Perera
+              FitnessMaster@99
             </Typography>
           </Box>
           <Typography
@@ -126,6 +131,7 @@ function SharedWorkoutPlans() {
               width: "1000px",
               minHeight: "370px",
               padding: "10px",
+              backgroundColor: "white",
               ml: "-30px",
             }}
           >
