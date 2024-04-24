@@ -587,6 +587,7 @@ function CreatePlan() {
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",
+        backgroundImage: `url(/src/assets/create2.jpg)`,
 
         backgroundSize: "cover",
         backgroundBlendMode: "overlay",
@@ -615,7 +616,7 @@ function CreatePlan() {
           <div
             style={{
               display: "flex",
-              backgroundColor: Colors.secondary,
+              backgroundColor: Colors.primary,
               padding: "12px",
               borderRadius: "5px",
               alignItems: "center",
@@ -634,7 +635,7 @@ function CreatePlan() {
           <div
             style={{
               display: "flex",
-              backgroundColor: Colors.secondary,
+              backgroundColor: Colors.primary,
               padding: "12px",
               borderRadius: "5px",
               alignItems: "center",
@@ -669,7 +670,8 @@ function CreatePlan() {
             width: "20%",
             minHeight: "70%",
             marginRight: "20px",
-
+            backgroundColor: "rgba(252, 251, 255, 0.1)",
+            border: "2px solid black",
             justifyContent: "flex-start",
             alignItems: "center",
             color: "white",
@@ -678,7 +680,7 @@ function CreatePlan() {
           }}
         >
           <DndProvider backend={HTML5Backend}>
-            <h3 style={{ color: "black" }}>Routines</h3>
+            <h3 style={{ color: "white" }}>Routines</h3>
 
             <Menu
               moveItem={(dragIndex, hoverIndex) =>
@@ -699,10 +701,12 @@ function CreatePlan() {
             flexDirection: "column",
             width: "20%",
             minHeight: "70%",
+            backgroundColor: "rgba(252, 251, 255, 0.1)",
+            border: "2px solid black",
           }}
         >
           <DndProvider backend={HTML5Backend}>
-            <h3>Exercises</h3>
+            <h3 style={{ color: "white" }}>Exercises</h3>
             <Menu
               moveItem={(dragIndex, hoverIndex) =>
                 moveItem(dragIndex, hoverIndex, "menu2")
@@ -725,7 +729,7 @@ function CreatePlan() {
             marginLeft: "20px",
             color: "white",
             fontSize: "medium",
-
+            backgroundColor: "rgba(252, 251, 255, 0.5)",
             border: "2px dotted black",
             borderRadius: "10px",
             padding: "20px",
